@@ -5,7 +5,9 @@
 package crud.senati;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -25,10 +27,10 @@ public class Usuarios extends javax.swing.JFrame {
         Conexion cn =new Conexion();//Instancia
         cn.conectar();
         
-        String query="select * from alumno";
+        String query="select * from usuario";
         
         try{
-            Statement st  = null;
+            Statement st;
             st = cn.conectar().createStatement();
             ResultSet rs = st.executeQuery(query); 
             if (rs != null){
@@ -95,10 +97,25 @@ public class Usuarios extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblUsuarios);
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -153,6 +170,66 @@ public class Usuarios extends javax.swing.JFrame {
         
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        agregarUsuario formAdd = new agregarUsuario();
+        formAdd.setVisible(true);
+        /*
+        Conexion cn = new Conexion();
+        String query = "INSERT INTO Usuario(id, name, lastname) VALUE(?, ?, ?)";
+        
+        try {
+        PreparedStatement ps = cn.conectar().prepareStatement(query);    
+        ps.setInt(1, 3);
+        ps.setString(2, "");
+        ps.setString(3, "");
+        
+        if (ps.execute()){
+            System.out.println("Registro insertado correctamente");
+            
+        }
+        
+        }catch (SQLException e) {
+            System.out.println(e);
+   
+        }
+       */ 
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        EditarUsuario formUpd = new EditarUsuario();
+        formUpd.setVisible(true);
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        int option = JOptionPane.showConfirmDialog(null,
+                "¿Estas seguro de eliminar ? ",
+                        "Eliminar",
+                        JOptionPane.OK_OPTION,
+                        JOptionPane.CANCEL_OPTION);
+        if (option == 0){
+            TableModel model = tblUsuarios.getModel();
+        Conexion cn =new Conexion();
+        String id = model.getValueAt(tblUsuarios.getSelectedRow(), 0).toString();
+        String query = "DELETE FROM Usuario WHERE id = ?";
+        
+        try {
+            PreparedStatement ps = cn.conectar().prepareStatement(query);
+            ps.setInt(1, Integer.parseInt(id));
+            ps.execute();
+            
+            //System.out.println("Eliminar");
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        } else {
+            JOptionPane.showMessageDialog(null," seleciona uno ");
+        }
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -12,9 +12,9 @@ import java.sql.*;
 public class Conexion {
     public Connection conectar(){
         
-        String url = "jdbc:mysql://localhost:3306/senati?zeroDateTimeBehavior=CONVERT_TO_NULL";
+        String url = "jdbc:mysql://localhost:3308/senati?zeroDateTimeBehavior=CONVERT_TO_NULL";
         String user = "root";
-        String password = "";
+        String password = "1234";
         
         Connection cn = null;
         try{
