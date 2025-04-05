@@ -12,9 +12,9 @@ import java.sql.*;
 public class Conexion {
     public Connection conectar(){
         
-        String url = "jdbc:mysql://localhost:3308/senati?zeroDateTimeBehavior=CONVERT_TO_NULL";
+        String url = "jdbc:mysql://localhost:3306/senati?zeroDateTimeBehavior=CONVERT_TO_NULL";
         String user = "root";
-        String password = "1234";
+        String password = "root";
         
         Connection cn = null;
         try{
@@ -30,5 +30,14 @@ public class Conexion {
         
         
         return cn;
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        // TODO code application logic here
+        Conexion cn=new Conexion();
+        cn.conectar();
     }
 }
