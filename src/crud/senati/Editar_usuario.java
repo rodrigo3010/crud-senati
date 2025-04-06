@@ -5,7 +5,7 @@
 package crud.senati;
 import java.sql.*;
 import javax.swing.JFrame;
-import javax.swing.table.TableModel;
+//import javax.swing.table.TableModel;
 /**
  *
  * @author Alumno-ETI
@@ -30,11 +30,11 @@ public class Editar_usuario extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        id_e = new javax.swing.JTextField();
-        nombre_e = new javax.swing.JTextField();
-        apellido_e = new javax.swing.JTextField();
-        Editar = new javax.swing.JButton();
-        Cancelar = new javax.swing.JButton();
+        id_e_1 = new javax.swing.JTextField();
+        nombre_e_1 = new javax.swing.JTextField();
+        apellido_e_1 = new javax.swing.JTextField();
+        Editar_e_1 = new javax.swing.JButton();
+        Cancelar_e_1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -44,17 +44,17 @@ public class Editar_usuario extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido:");
 
-        Editar.setText("Editar");
-        Editar.addActionListener(new java.awt.event.ActionListener() {
+        Editar_e_1.setText("Editar");
+        Editar_e_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditarActionPerformed(evt);
+                Editar_e_1ActionPerformed(evt);
             }
         });
 
-        Cancelar.setText("Cancelar");
-        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+        Cancelar_e_1.setText("Cancelar");
+        Cancelar_e_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarActionPerformed(evt);
+                Cancelar_e_1ActionPerformed(evt);
             }
         });
 
@@ -77,19 +77,19 @@ public class Editar_usuario extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nombre_e))
+                                .addComponent(nombre_e_1))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37)
-                                .addComponent(id_e, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(id_e_1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(apellido_e)))
+                                .addComponent(apellido_e_1)))
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Editar)
-                            .addComponent(Cancelar))))
+                            .addComponent(Editar_e_1)
+                            .addComponent(Cancelar_e_1))))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,34 +102,34 @@ public class Editar_usuario extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(id_e, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(id_e_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(nombre_e, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nombre_e_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(apellido_e, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(apellido_e_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(Editar)
+                        .addComponent(Editar_e_1)
                         .addGap(18, 18, 18)
-                        .addComponent(Cancelar)))
+                        .addComponent(Cancelar_e_1)))
                 .addContainerGap(121, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
+    private void Editar_e_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Editar_e_1ActionPerformed
         // TODO add your handling code here:
         Formulario_Usuarios f_u=new Formulario_Usuarios();
         Conexion cn=new Conexion();
         String query ="UPDATE Usuario SET Nombre=? , Apellido=? WHERE id=?";
-        int id=Integer.parseInt(id_e.getText());
-        String nombre=nombre_e.getText();
-        String apellido=apellido_e.getText();
+        int id=Integer.parseInt(id_e_1.getText());
+        String nombre=nombre_e_1.getText();
+        String apellido=apellido_e_1.getText();
         try{
             PreparedStatement ps=cn.conectar().prepareStatement(query);
             ps.setString(1, nombre);
@@ -154,12 +154,12 @@ public class Editar_usuario extends javax.swing.JFrame {
             System.out.println(e);
         }
 
-    }//GEN-LAST:event_EditarActionPerformed
+    }//GEN-LAST:event_Editar_e_1ActionPerformed
 
-    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+    private void Cancelar_e_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancelar_e_1ActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_CancelarActionPerformed
+    }//GEN-LAST:event_Cancelar_e_1ActionPerformed
 
     //public void 
     
@@ -202,14 +202,14 @@ public class Editar_usuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Cancelar;
-    private javax.swing.JButton Editar;
-    private javax.swing.JTextField apellido_e;
-    private javax.swing.JTextField id_e;
+    private javax.swing.JButton Cancelar_e_1;
+    private javax.swing.JButton Editar_e_1;
+    private javax.swing.JTextField apellido_e_1;
+    private javax.swing.JTextField id_e_1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField nombre_e;
+    private javax.swing.JTextField nombre_e_1;
     // End of variables declaration//GEN-END:variables
 }
